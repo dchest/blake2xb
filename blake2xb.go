@@ -8,15 +8,15 @@ import (
 	"github.com/dchest/blake2b"
 )
 
-// UnknownXOFSize is used when the output size of XOF is unknown beforehand. It
+// UnknownSize is used when the output size of XOF is unknown beforehand. It
 // can be used to read as many bytes as required from the XOF up to its value.
 // For unknown output size, shorter outputs are prefixes of longer outputs.
-const UnknownXOFSize = 1<<32 - 1
+const UnknownSize = 1<<32 - 1
 
 // Config is used to configure hash function parameters and keying.
 // All parameters are optional.
 type Config struct {
-	Size   uint32        // digest size (if zero, size is UnknownXOFSize)
+	Size   uint32        // digest size (if zero, size is UnknownSize)
 	Key    []byte        // key for prefix-MAC
 	Salt   []byte        // salt (if < 8 bytes, padded with zeros)
 	Person []byte        // personalization (if < 8 bytes, padded with zeros)
@@ -36,7 +36,7 @@ type xof struct {
 func NewXOF(c *Config) (io.ReadWriter, error) {
 	outSize := c.Size
 	if outSize == 0 {
-		outSize = UnknownXOFSize
+		outSize = UnknownSize
 	}
 
 	// Create root hash config.
