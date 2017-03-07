@@ -9,8 +9,8 @@ import (
 )
 
 // UnknownXOFSize is used when the output size of XOF is unknown beforehand. It
-// can be used to read as many bytes as required from the XOF up to its value,
-// where shorter sequences are be prefixes of longer sequences.
+// can be used to read as many bytes as required from the XOF up to its value.
+// For unknown output size, shorter outputs are prefixes of longer outputs.
 const UnknownXOFSize = 1<<32 - 1
 
 // Config is used to configure hash function parameters and keying.
