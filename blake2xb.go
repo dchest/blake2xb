@@ -18,8 +18,8 @@ const UnknownSize = 1<<32 - 1
 type Config struct {
 	Size   uint32        // digest size (if zero, size is UnknownSize)
 	Key    []byte        // key for prefix-MAC
-	Salt   []byte        // salt (if < 8 bytes, padded with zeros)
-	Person []byte        // personalization (if < 8 bytes, padded with zeros)
+	Salt   []byte        // salt (if < 16 bytes, padded with zeros)
+	Person []byte        // personalization (if < 16 bytes, padded with zeros)
 	Tree   *blake2b.Tree // parameters for tree hashing
 }
 
