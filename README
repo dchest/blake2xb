@@ -1,5 +1,8 @@
 Go implementation of BLAKE2Xb XOF (extended output function).
-See: https://blake2.net/blake2x.pdf
+
+Specification: https://blake2.net/blake2x.pdf
+
+See also BLAKE2xs implementation: https://github.com/dchest/blake2xs
 
 INSTALLATION
 
