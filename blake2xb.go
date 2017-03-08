@@ -34,6 +34,10 @@ type xof struct {
 
 // NewXOF returns a new extended output function.
 func NewXOF(c *Config) (io.ReadWriter, error) {
+	if c == nil {
+		c = &Config{Size: UnknownSize}
+	}
+
 	outSize := c.Size
 	if outSize == 0 {
 		outSize = UnknownSize
